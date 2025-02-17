@@ -26,9 +26,16 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app/assets"
               }
             ],
-            "styles": ["src/app/styles/main.css"],
+            "styles": [
+              "src/app/styles/main.css",
+              "node_modules/primeicons/primeicons.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -82,9 +89,16 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app/assets"
               }
             ],
-            "styles": ["src/app/styles/main.css"],
+            "styles": [
+              "src/app/styles/main.css",
+              "node_modules/primeicons/primeicons.css"
+            ],
             "scripts": [],
             "builderMode": "browser"
           }

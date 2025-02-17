@@ -1,0 +1,7 @@
+:host ::ng-deep .p-card {
+  overflow: hidden;
+}
+
+:host ::ng-deep .p-card-body {
+  padding: 0;
+}
