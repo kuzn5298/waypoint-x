@@ -1,4 +1,5 @@
 @import "./tailwind";
+@import "./override";
 
 body {
   position: fixed;

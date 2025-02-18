@@ -50,11 +50,24 @@ export const AuthStore = signalStore(
           })
         )
       ),
+      async registerWithEmailAndPassword(email: string, password: string) {
+        patchState(store, { submitting: true });
+        await authService.registerWithEmailAndPassword(email, password);
+        patchState(store, { submitting: false });
+      },
       async loginWithGoogle() {
         await authService.loginWithGoogle();
       },
       async loginWithGithub() {
         await authService.loginWithGithub();
+      },
+      async loginWithEmailAndPassword(email: string, password: string) {
+        patchState(store, { submitting: true });
+        await authService.loginWithEmailAndPassword(email, password);
+        patchState(store, { submitting: false });
+      },
+      async resetPassword(email: string) {
+        await authService.resetPassword(email);
       },
       async logout() {
         patchState(store, { submitting: true });
@@ -67,7 +80,7 @@ export const AuthStore = signalStore(
     const authService = inject(AuthService);
     return {
       onInit() {
-        authService.user$.subscribe((user) => {
+        authService.authUser$.subscribe((user) => {
           store._updateUser(user);
         });
       },

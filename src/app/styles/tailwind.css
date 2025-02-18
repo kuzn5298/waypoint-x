@@ -1,7 +1,9 @@
-@layer tailwind;
-
 @layer tailwind {
   @import "tailwindcss";
 }
 
 @plugin "tailwindcss-primeui";
+
+@theme {
+  --color-error: var(--p-error);
+}

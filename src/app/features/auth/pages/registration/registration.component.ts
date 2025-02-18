@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, effect, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
@@ -8,6 +8,9 @@ import { CardModule } from 'primeng/card';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { ViewTransitionDirective } from '@/app/shared/directives/view-transition.directive';
+import { AuthStore } from '@/app/core/store/auth/auth.store';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { LinkButtonDirective } from '@/app/shared/directives/link-button.directive';
 
 @Component({
   selector: 'app-registration',
@@ -21,8 +24,36 @@ import { ViewTransitionDirective } from '@/app/shared/directives/view-transition
     InputIconModule,
     RouterLink,
     ViewTransitionDirective,
+    ReactiveFormsModule,
+    LinkButtonDirective,
   ],
   templateUrl: './registration.component.html',
   styleUrl: './registration.component.css',
 })
-export class RegistrationComponent {}
+export class RegistrationComponent {
+  authStore = inject(AuthStore);
+
+  form = new FormGroup({
+    email: new FormControl(''),
+    password: new FormControl(''),
+  });
+
+  disabled = computed(() => {
+    return this.authStore.loading() || this.authStore.submitting();
+  });
+
+  constructor() {
+    effect(() => {
+      if (this.disabled()) {
+        this.form.disable();
+      } else {
+        this.form.enable();
+      }
+    });
+  }
+
+  onSubmit() {
+    const { email, password } = this.form.value;
+    this.authStore.registerWithEmailAndPassword(email ?? '', password ?? '');
+  }
+}

@@ -34,6 +34,7 @@ export const themePreset = definePreset(Aura, {
         },
         extend: {
           groundBackground: '{surface.50}',
+          error: '{red.400}',
         },
       },
       dark: {
@@ -53,6 +54,7 @@ export const themePreset = definePreset(Aura, {
         },
         extend: {
           groundBackground: '{surface.950}',
+          error: '{red.300}',
         },
       },
     },

@@ -1,4 +1,10 @@
-import { Component, computed, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  inject,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
@@ -10,6 +16,8 @@ import { InputIconModule } from 'primeng/inputicon';
 import { DividerModule } from 'primeng/divider';
 import { ViewTransitionDirective } from '@/app/shared/directives/view-transition.directive';
 import { AuthStore } from '@/app/core/store/auth/auth.store';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { LinkButtonDirective } from '@/app/shared/directives/link-button.directive';
 
 @Component({
   selector: 'app-login',
@@ -24,16 +32,34 @@ import { AuthStore } from '@/app/core/store/auth/auth.store';
     RouterLink,
     ViewTransitionDirective,
     DividerModule,
+    ReactiveFormsModule,
+    LinkButtonDirective,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {
   authStore = inject(AuthStore);
 
+  form = new FormGroup({
+    email: new FormControl(''),
+    password: new FormControl(''),
+  });
+
   disabled = computed(() => {
     return this.authStore.loading() || this.authStore.submitting();
   });
+
+  constructor() {
+    effect(() => {
+      if (this.disabled()) {
+        this.form.disable();
+      } else {
+        this.form.enable();
+      }
+    });
+  }
 
   loginWithGoogle() {
     this.authStore.loginWithGoogle();
@@ -41,5 +67,10 @@ export class LoginComponent {
 
   loginWithGithub() {
     this.authStore.loginWithGithub();
+  }
+
+  onSubmit() {
+    const { email, password } = this.form.value;
+    this.authStore.loginWithEmailAndPassword(email ?? '', password ?? '');
   }
 }
