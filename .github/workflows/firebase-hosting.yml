@@ -7,21 +7,22 @@ jobs:
   build_and_deploy:
     name: Build and Deploy
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [22]
+    environment: development
+    env:
+      NODE_VERSION: 22
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js ${{ matrix.node-version }}
+      - name: Set up Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: Create env file
         run: |
           touch .env.local
+          echo '${{ secrets.FIREBASE_CONFIG }}' >> .env.local
 
       - name: Install dependencies
         run: npm install

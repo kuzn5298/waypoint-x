@@ -19,6 +19,8 @@
             icon="pi pi-google"
             outlined
             class="w-full"
+            (click)="loginWithGoogle()"
+            [disabled]="disabled()"
           ></button>
           <button
             pButton
@@ -26,22 +28,20 @@
             icon="pi pi-github"
             outlined
             class="w-full"
+            (click)="loginWithGithub()"
+            [disabled]="disabled()"
           ></button>
         </div>
 
-        <div class="w-full flex items-center">
-          <hr class="flex-1 border-surface-400" />
-          <p class="text-sm font-medium uppercase px-2.5 text-surface-400">
-            Or login with email
-          </p>
-          <hr class="flex-1 border-surface-400" />
-        </div>
+        <p-divider align="center">
+          <p class="text-sm font-medium uppercase">Or login with email</p>
+        </p-divider>
 
         <form class="flex flex-col gap-4">
           <div>
-            <label for="email1" class="block text-900 font-medium mb-2"
-              >Email</label
-            >
+            <label for="email1" class="block text-900 font-medium mb-2">
+              Email
+            </label>
             <p-iconfield>
               <p-inputicon styleClass="pi pi-user" />
               <input
@@ -49,6 +49,7 @@
                 type="text"
                 class="w-full"
                 placeholder="john@example.com"
+                [disabled]="disabled()"
               />
             </p-iconfield>
           </div>
@@ -63,6 +64,7 @@
                 type="password"
                 class="w-full"
                 placeholder="********"
+                [disabled]="disabled()"
               />
             </p-iconfield>
             <div class="flex justify-end">
@@ -77,6 +79,7 @@
             label="Sign in"
             icon="pi pi-sign-in"
             class="w-full"
+            [disabled]="disabled()"
           ></button>
         </form>
 

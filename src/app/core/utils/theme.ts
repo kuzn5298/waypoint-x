@@ -57,4 +57,17 @@ export const themePreset = definePreset(Aura, {
       },
     },
   },
+  components: {
+    divider: {
+      root: {
+        borderColor: '{surface.500}',
+      },
+      content: {
+        color: '{surface.500}',
+      },
+      horizontal: {
+        margin: '0',
+      },
+    },
+  },
 });

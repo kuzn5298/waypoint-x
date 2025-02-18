@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { AuthStore } from './core/store/auth/auth.store';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { environment } from './core/environment/environment';
@@ -9,5 +10,6 @@ import { environment } from './core/environment/environment';
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  title = environment.PUBLIC_TITLE;
+  private _ = inject(AuthStore); //trigger onInit
+  title = environment.publicTitle;
 }

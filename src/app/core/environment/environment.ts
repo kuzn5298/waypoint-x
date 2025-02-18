@@ -1,3 +1,6 @@
+import { firebaseConfig } from './firebaseConfig';
+
 export const environment = {
-  PUBLIC_TITLE: import.meta.env.NG_APP_PUBLIC_TITLE,
+  publicTitle: import.meta.env.NG_APP_PUBLIC_TITLE,
+  firebase: firebaseConfig,
 };
