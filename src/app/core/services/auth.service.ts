@@ -12,12 +12,14 @@ import {
   createUserWithEmailAndPassword,
   User as FirebaseUser,
 } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private auth = inject(Auth);
+  private router = inject(Router);
 
   authUser$ = authState(this.auth);
 
@@ -56,8 +58,12 @@ export class AuthService {
   }
 
   async loginWithGithub() {
-    const provider = new GithubAuthProvider();
-    await signInWithPopup(this.auth, provider);
+    try {
+      const provider = new GithubAuthProvider();
+      await signInWithPopup(this.auth, provider);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   async resetPassword(email: string) {
@@ -66,5 +72,6 @@ export class AuthService {
 
   async logout() {
     await signOut(this.auth);
+    this.router.navigate(['/']);
   }
 }

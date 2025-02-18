@@ -2,6 +2,7 @@ import {
   ApplicationConfig,
   provideExperimentalZonelessChangeDetection,
   isDevMode,
+  provideAppInitializer,
 } from '@angular/core';
 import { provideRouter, withViewTransitions } from '@angular/router';
 import { provideServiceWorker } from '@angular/service-worker';
@@ -18,6 +19,7 @@ import { providePrimeNG } from 'primeng/config';
 import { themePreset } from './core/utils/theme';
 import { onViewTransitionCreated } from './core/utils/withViewTransitions';
 import { environment } from './core/environment';
+import { appInitializer } from './core/utils/appInitializer';
 
 import { routes } from './app.routes';
 
@@ -51,5 +53,6 @@ export const appConfig: ApplicationConfig = {
     }),
     provideFirebaseApp(fbApp),
     provideAuth(authApp),
+    provideAppInitializer(appInitializer),
   ],
 };

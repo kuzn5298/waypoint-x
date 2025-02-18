@@ -10,6 +10,6 @@ import { environment } from './core/environment/environment';
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  private _ = inject(AuthStore); //trigger onInit
+  private _ = inject(AuthStore);
   title = environment.publicTitle;
 }

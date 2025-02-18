@@ -13,6 +13,7 @@ import { withDevtools } from '@angular-architects/ngrx-toolkit';
 import { of, pipe, switchMap, tap } from 'rxjs';
 import { AuthService } from '@/app/core/services/auth.service';
 import { User } from '@/app/shared/models/user.interface';
+import { Router } from '@angular/router';
 
 interface AuthState {
   user: User | null;
@@ -31,14 +32,14 @@ export const AuthStore = signalStore(
   withState(initialState),
   withDevtools('auth'),
   withComputed(({ user }) => ({
-    isLoggedIn: computed(() => !!user),
+    isAuthenticated: computed(() => !!user()),
   })),
   withMethods((store) => {
     const authService = inject(AuthService);
+    const router = inject(Router);
     return {
       _updateUser: rxMethod<FirebaseUser | null>(
         pipe(
-          tap(() => patchState(store, { loading: true })),
           switchMap((user) => {
             if (user) {
               return authService.getUserData(user);
@@ -46,6 +47,10 @@ export const AuthStore = signalStore(
             return of(null);
           }),
           tap((user) => {
+            if (!store.loading()) {
+              const redirectUrl = window.history.state?.['redirectUrl'] ?? '/';
+              router.navigate([redirectUrl]);
+            }
             patchState(store, { user, loading: false });
           })
         )
@@ -80,9 +85,7 @@ export const AuthStore = signalStore(
     const authService = inject(AuthService);
     return {
       onInit() {
-        authService.authUser$.subscribe((user) => {
-          store._updateUser(user);
-        });
+        store._updateUser(authService.authUser$);
       },
     };
   })
