@@ -2,14 +2,13 @@ import { Routes } from '@angular/router';
 import { MainLayoutComponent } from './core/layouts/main-layout/main-layout.component';
 import { AuthLayoutComponent } from './core/layouts/auth-layout/auth-layout.component';
 import { guestGuard } from './core/guards/guest.guard';
-import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'routes', pathMatch: 'full' },
   {
     path: '',
     component: MainLayoutComponent,
     children: [
+      { path: '', redirectTo: 'routes', pathMatch: 'full' },
       {
         path: 'routes',
         loadChildren: () =>
@@ -21,7 +20,7 @@ export const routes: Routes = [
           import('./features/settings/settings.routes').then(
             (m) => m.settingsRoutes
           ),
-        canActivate: [authGuard],
+        canActivate: [guestGuard],
       },
     ],
   },
@@ -37,5 +36,5 @@ export const routes: Routes = [
   // { path: 'route', component: undefined },
   // { path: 'profile', component: undefined },
   // { path: 'error', component: undefined },
-  { path: '**', redirectTo: 'error/404', pathMatch: 'full' },
+  // { path: '**', redirectTo: 'error/404', pathMatch: 'full' },
 ];
