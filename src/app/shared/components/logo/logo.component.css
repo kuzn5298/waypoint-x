@@ -1,0 +1,7 @@
+a:focus-visible {
+  box-shadow: none;
+  outline: var(--p-button-focus-ring-width) var(--p-button-focus-ring-style)
+    currentColor;
+  outline-offset: var(--p-button-focus-ring-offset);
+  border-radius: 25%;
+}

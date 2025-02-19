@@ -1,7 +1,7 @@
 {
   "name": "WayPointX",
   "short_name": "WPX",
-  "theme_color": "#000000",
+  "theme_color": "#818cf8",
   "background_color": "#001733",
   "display": "standalone",
   "scope": "./",
@@ -52,12 +52,6 @@
     {
       "src": "icons/icon-256x256.png",
       "sizes": "256x256",
-      "type": "image/png",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "icons/icon-384x384.png",
-      "sizes": "384x384",
       "type": "image/png",
       "purpose": "maskable any"
     },
