@@ -1,0 +1,8 @@
+{
+  "EMAIL_ALREADY_IN_USE": "This email is already in use.",
+  "INVALID_EMAIL": "Invalid email format.",
+  "USER_NOT_FOUND": "User not found.",
+  "WRONG_PASSWORD": "Incorrect password.",
+  "TOO_MANY_REQUESTS": "Too many failed attempts.",
+  "UNKNOWN_ERROR": "An unknown error occurred."
+}

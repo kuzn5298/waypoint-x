@@ -1,7 +1,6 @@
 // Define the type of the environment variables.
 declare interface Env {
   readonly NODE_ENV: string;
-  readonly NG_APP_PUBLIC_TITLE: string;
 
   readonly NG_APP_API_KEY: string;
   readonly NG_APP_AUTH_DOMAIN: string;

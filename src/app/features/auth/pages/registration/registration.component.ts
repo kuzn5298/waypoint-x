@@ -1,5 +1,7 @@
 import { Component, computed, effect, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { TranslatePipe } from '@ngx-translate/core';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { InputTextModule } from 'primeng/inputtext';
@@ -9,7 +11,6 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { ViewTransitionDirective } from '@/app/shared/directives/view-transition.directive';
 import { AuthStore } from '@/app/core/store/auth/auth.store';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { LinkButtonDirective } from '@/app/shared/directives/link-button.directive';
 
 @Component({
@@ -26,6 +27,7 @@ import { LinkButtonDirective } from '@/app/shared/directives/link-button.directi
     ViewTransitionDirective,
     ReactiveFormsModule,
     LinkButtonDirective,
+    TranslatePipe,
   ],
   templateUrl: './registration.component.html',
   styleUrl: './registration.component.css',

@@ -6,6 +6,8 @@ import {
   inject,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { InputTextModule } from 'primeng/inputtext';
@@ -15,9 +17,8 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { DividerModule } from 'primeng/divider';
 import { ViewTransitionDirective } from '@/app/shared/directives/view-transition.directive';
-import { AuthStore } from '@/app/core/store/auth/auth.store';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { LinkButtonDirective } from '@/app/shared/directives/link-button.directive';
+import { AuthStore } from '@/app/core/store/auth/auth.store';
 
 @Component({
   selector: 'app-login',
@@ -34,12 +35,14 @@ import { LinkButtonDirective } from '@/app/shared/directives/link-button.directi
     DividerModule,
     ReactiveFormsModule,
     LinkButtonDirective,
+    TranslatePipe,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {
+  private translate = inject(TranslateService);
   authStore = inject(AuthStore);
 
   form = new FormGroup({
@@ -67,6 +70,16 @@ export class LoginComponent {
 
   loginWithGithub() {
     this.authStore.loginWithGithub();
+  }
+
+  async resetPassword() {
+    const email = prompt(
+      this.translate.instant('AUTH.RESET_PASSWORD_ENTER_EMAIL')
+    );
+    if (email) {
+      await this.authStore.resetPassword(email);
+      alert(this.translate.instant('AUTH.RESET_PASSWORD_CHECK_EMAIL'));
+    }
   }
 
   onSubmit() {

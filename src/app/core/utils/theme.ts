@@ -71,5 +71,10 @@ export const themePreset = definePreset(Aura, {
         margin: '0',
       },
     },
+    toast: {
+      text: {
+        gap: 0,
+      },
+    },
   },
 });
