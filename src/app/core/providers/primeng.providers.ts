@@ -1,7 +1,9 @@
-import Aura from '@primeng/themes/aura';
 import { definePreset } from '@primeng/themes';
+import Aura from '@primeng/themes/aura';
+import { MessageService } from 'primeng/api';
+import { providePrimeNG } from 'primeng/config';
 
-export const themePreset = definePreset(Aura, {
+const themePreset = definePreset(Aura, {
   semantic: {
     primary: {
       50: '{indigo.50}',
@@ -78,3 +80,19 @@ export const themePreset = definePreset(Aura, {
     },
   },
 });
+
+export const providePrimeNGConfig = () =>
+  providePrimeNG({
+    theme: {
+      preset: themePreset,
+      options: {
+        darkModeSelector: '.dark',
+        cssLayer: {
+          name: 'primeng',
+          order: 'tailwind, primeng',
+        },
+      },
+    },
+  });
+
+export const providePrimeNGMessageService = () => MessageService;

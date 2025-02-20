@@ -1,10 +1,13 @@
 import { inject } from '@angular/core';
-import { ViewTransitionInfo } from '@angular/router';
+import {
+  provideRouter,
+  Routes,
+  withViewTransitions,
+  ViewTransitionInfo,
+} from '@angular/router';
 import { ViewTransitionService } from '@/app/core/services/view-transition.service';
 
-export const onViewTransitionCreated = ({
-  transition,
-}: ViewTransitionInfo): void => {
+const onViewTransitionCreated = ({ transition }: ViewTransitionInfo): void => {
   const viewTransitionService = inject(ViewTransitionService);
   viewTransitionService.setTransitionType('route');
 
@@ -12,3 +15,6 @@ export const onViewTransitionCreated = ({
     viewTransitionService.resetTransitionType();
   });
 };
+
+export const provideAppRouter = (routes: Routes) =>
+  provideRouter(routes, withViewTransitions({ onViewTransitionCreated }));

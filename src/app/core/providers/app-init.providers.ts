@@ -1,12 +1,14 @@
-import { filter, firstValueFrom } from 'rxjs';
-import { inject } from '@angular/core';
+import { provideAppInitializer, inject } from '@angular/core';
 import { toObservable } from '@angular/core/rxjs-interop';
+import { filter, firstValueFrom } from 'rxjs';
 import { AuthStore } from '../store/auth/auth.store';
 
-export const appInitializer = async () => {
+const appInitializer = async () => {
   const authStore = inject(AuthStore);
 
   await firstValueFrom(
     toObservable(authStore.loading).pipe(filter((loading) => !loading))
   );
 };
+
+export const provideAppInit = () => provideAppInitializer(appInitializer);
