@@ -8,6 +8,12 @@ import {
   Language,
 } from '@/app/core/services/language.service';
 
+type LanguageMenuItem = MenuItem & {
+  code: Language;
+  flagUrl: string;
+  name: string;
+};
+
 @Component({
   selector: 'app-language-selector',
   imports: [Menu, ButtonModule, TranslatePipe],
@@ -19,24 +25,20 @@ export class LanguageSelectorComponent {
 
   language = this.languageService.language;
   loadingLanguage = this.languageService.loading;
-  items = computed<MenuItem[]>(() =>
+  items = computed<LanguageMenuItem[]>(() =>
     this.languageService
       .availableLanguages()
       .map(this.getLanguageItem.bind(this))
   );
-  selectedItem = computed<MenuItem>(() =>
+  selectedItem = computed<LanguageMenuItem>(() =>
     this.getLanguageItem(this.language())
   );
 
-  private getFlagEmoji(countryCode: string): string {
+  private getFlagUrl(countryCode: string): string {
     if (countryCode === 'en') {
       countryCode = 'gb';
     }
-    return countryCode
-      .toUpperCase()
-      .split('')
-      .map((char) => String.fromCodePoint(0x1f1e6 + char.charCodeAt(0) - 65))
-      .join('');
+    return `https://flagcdn.com/${countryCode}.svg`;
   }
 
   private getLanguageName(countryCode: string): string {
@@ -47,10 +49,10 @@ export class LanguageSelectorComponent {
     this.languageService.setLanguage(language);
   }
 
-  private getLanguageItem(countryCode: Language): MenuItem {
+  private getLanguageItem(countryCode: Language): LanguageMenuItem {
     return {
       name: this.getLanguageName(countryCode),
-      flag: this.getFlagEmoji(countryCode),
+      flagUrl: this.getFlagUrl(countryCode),
       code: countryCode,
       command: () => this.changeLanguage(countryCode),
     };
