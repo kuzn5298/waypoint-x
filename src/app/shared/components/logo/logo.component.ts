@@ -7,7 +7,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './logo.component.html',
   styleUrl: './logo.component.css',
   host: {
-    class: 'flex text-primary h-12',
+    class: 'flex text-primary h-8',
   },
 })
 export class LogoComponent {}

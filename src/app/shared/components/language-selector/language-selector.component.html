@@ -1,0 +1,22 @@
+<p-menu #menu popup [model]="items()" styleClass="py-1 px-0.5 min-w-32!">
+  <ng-template let-country #item>
+    <div class="flex items-center gap-2 cursor-pointer px-1.5 py-0.5">
+      <span>{{ country.flag }}</span>
+      <div>
+        {{ country.name | translate }}
+      </div>
+    </div>
+  </ng-template>
+</p-menu>
+
+<button
+  pButton
+  text
+  rounded
+  iconPos="right"
+  size="small"
+  [icon]="'pi ' + (menu.visible ? 'pi-chevron-up' : 'pi-chevron-down')"
+  [label]="selectedItem()['flag'] + ' ' + (selectedItem()['name'] | translate)"
+  [loading]="loadingLanguage()"
+  (click)="menu.toggle($event)"
+></button>

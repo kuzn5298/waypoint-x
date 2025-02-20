@@ -1,5 +1,6 @@
 @import "./tailwind";
 @import "./override";
+@import "./view-transition";
 
 body {
   position: fixed;
@@ -7,7 +8,10 @@ body {
   height: 100%;
   top: 0;
   left: 0;
-  background-color: var(--p-ground-background);
   font-weight: 400;
+}
+
+.app-container {
+  background-color: var(--p-ground-background);
   color: var(--p-text-color);
 }

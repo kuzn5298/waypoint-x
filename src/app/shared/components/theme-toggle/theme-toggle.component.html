@@ -1,0 +1,8 @@
+<button
+  #toggleButton
+  pButton
+  text
+  rounded
+  [icon]="'pi ' + (theme() === 'dark' ? 'pi-sun' : 'pi-moon')"
+  (click)="toggleTheme()"
+></button>

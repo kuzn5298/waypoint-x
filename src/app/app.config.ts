@@ -46,6 +46,7 @@ export class MultiTranslateHttpLoader implements TranslateLoader {
     return forkJoin({
       AUTH: this.http.get(`./i18n/${lang}/auth.json`),
       ERRORS: this.http.get(`./i18n/${lang}/errors.json`),
+      COMMON: this.http.get(`./i18n/${lang}/common.json`),
     });
   }
 }
