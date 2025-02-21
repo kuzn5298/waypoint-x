@@ -1,0 +1,33 @@
+<p-menu #menu popup [model]="items()">
+  <ng-template #item let-item>
+    <a
+      pRipple
+      class="flex items-center p-menu-item-link"
+      [routerLink]="['/', item.routerLink]"
+    >
+      <span [class]="item.icon"></span>
+      <span>{{ item.label | translate }}</span>
+    </a>
+  </ng-template>
+  <ng-template #submenuheader let-item>
+    <hr />
+  </ng-template>
+</p-menu>
+
+<button
+  pButton
+  rounded
+  outlined
+  severity="secondary"
+  class="p-1.5 pl-3.5 gap-3"
+  (click)="menu.toggle($event)"
+>
+  <i class="pi pi-bars"></i>
+  <p-avatar
+    shape="circle"
+    [icon]="!userAvatar() ? 'pi pi-user' : undefined"
+    [image]="userAvatar()"
+    [class.bg-primary]="!!user()"
+    [class.text-primary-contrast]="!!user()"
+  />
+</button>

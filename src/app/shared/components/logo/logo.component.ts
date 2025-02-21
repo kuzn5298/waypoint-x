@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { AppRoutes } from '@/app/shared/enums/AppRoute.enum';
 
 @Component({
   selector: 'app-logo',
@@ -10,4 +11,6 @@ import { RouterLink } from '@angular/router';
     class: 'flex text-primary h-8',
   },
 })
-export class LogoComponent {}
+export class LogoComponent {
+  link = AppRoutes.MAIN;
+}

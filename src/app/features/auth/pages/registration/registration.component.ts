@@ -12,6 +12,7 @@ import { InputIconModule } from 'primeng/inputicon';
 import { ViewTransitionDirective } from '@/app/shared/directives/view-transition.directive';
 import { AuthStore } from '@/app/core/store/auth/auth.store';
 import { LinkButtonDirective } from '@/app/shared/directives/link-button.directive';
+import { AppRoutes } from '@/app/shared/enums/AppRoute.enum';
 
 @Component({
   selector: 'app-registration',
@@ -34,6 +35,7 @@ import { LinkButtonDirective } from '@/app/shared/directives/link-button.directi
 })
 export class RegistrationComponent {
   authStore = inject(AuthStore);
+  loginLink = AppRoutes.SIGN_IN;
 
   form = new FormGroup({
     email: new FormControl(''),

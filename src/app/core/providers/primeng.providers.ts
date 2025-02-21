@@ -78,6 +78,15 @@ const themePreset = definePreset(Aura, {
         gap: 0,
       },
     },
+    menu: {
+      list: {
+        padding: '0.5rem 0.25rem',
+        gap: '0.25rem',
+      },
+      item: {
+        padding: '0.25rem 0.5rem',
+      },
+    },
   },
 });
 
@@ -89,7 +98,7 @@ export const providePrimeNGConfig = () =>
         darkModeSelector: '.dark',
         cssLayer: {
           name: 'primeng',
-          order: 'tailwind, primeng',
+          order: 'base, primeng, utilities',
         },
       },
     },

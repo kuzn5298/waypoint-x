@@ -30,9 +30,6 @@ export class LanguageSelectorComponent {
       .availableLanguages()
       .map(this.getLanguageItem.bind(this))
   );
-  selectedItem = computed<LanguageMenuItem>(() =>
-    this.getLanguageItem(this.language())
-  );
 
   private getFlagUrl(countryCode: string): string {
     if (countryCode === 'en') {

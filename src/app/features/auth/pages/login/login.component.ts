@@ -19,6 +19,7 @@ import { DividerModule } from 'primeng/divider';
 import { ViewTransitionDirective } from '@/app/shared/directives/view-transition.directive';
 import { LinkButtonDirective } from '@/app/shared/directives/link-button.directive';
 import { AuthStore } from '@/app/core/store/auth/auth.store';
+import { AppRoutes } from '@/app/shared/enums/AppRoute.enum';
 
 @Component({
   selector: 'app-login',
@@ -44,6 +45,7 @@ import { AuthStore } from '@/app/core/store/auth/auth.store';
 export class LoginComponent {
   private translate = inject(TranslateService);
   authStore = inject(AuthStore);
+  registrationLink = AppRoutes.SIGN_UP;
 
   form = new FormGroup({
     email: new FormControl(''),

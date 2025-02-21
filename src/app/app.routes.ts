@@ -2,40 +2,48 @@ import { Routes } from '@angular/router';
 import { MainLayoutComponent } from './core/layouts/main-layout/main-layout.component';
 import { AuthLayoutComponent } from './core/layouts/auth-layout/auth-layout.component';
 import { guestGuard } from './core/guards/guest.guard';
-import { authGuard } from './core/guards/auth.guard';
+import { AppRoutes } from './shared/enums/AppRoute.enum';
 
 export const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
     children: [
-      { path: '', redirectTo: 'routes', pathMatch: 'full' },
+      { path: AppRoutes.MAIN, redirectTo: AppRoutes.ROUTES, pathMatch: 'full' },
       {
-        path: 'routes',
+        path: '',
         loadChildren: () =>
           import('./features/routes/routes.routes').then((m) => m.routesRoutes),
       },
       {
-        path: 'settings',
+        path: '',
         loadChildren: () =>
           import('./features/settings/settings.routes').then(
             (m) => m.settingsRoutes
           ),
-        canActivate: [authGuard],
+      },
+      {
+        path: '',
+        loadChildren: () =>
+          import('./features/profile/profile.routes').then(
+            (m) => m.profileRoutes
+          ),
       },
     ],
   },
   {
-    path: 'auth',
+    path: '',
     component: AuthLayoutComponent,
     loadChildren: () =>
       import('./features/auth/auth.routes').then((m) => m.authRoutes),
     canActivate: [guestGuard],
   },
-
+  {
+    path: '',
+    loadChildren: () =>
+      import('./features/error/error.routes').then((m) => m.errorRoutes),
+  },
   // { path: 'create', component: undefined },
   // { path: 'route', component: undefined },
-  // { path: 'profile', component: undefined },
-  // { path: 'error', component: undefined },
-  // { path: '**', redirectTo: 'error/404', pathMatch: 'full' },
+  { path: '**', redirectTo: AppRoutes.NOT_FOUND, pathMatch: 'full' },
 ];

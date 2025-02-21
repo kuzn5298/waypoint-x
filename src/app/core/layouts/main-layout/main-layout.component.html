@@ -1,19 +1,17 @@
-<header class="flex px-4 py-2 gap-2">
-  <app-logo />
-  <p-button [routerLink]="['']">home</p-button>
-  <p-button [routerLink]="['routes']">routes</p-button>
-  <p-button [routerLink]="['settings']">settings</p-button>
-  <p-button [routerLink]="['auth', 'login']">login</p-button>
-  <div class="flex-1"></div>
-  @if(authStore.isAuthenticated()) {
-  <div class="flex gap-2 items-center">
-    <span>{{ authStore.user()?.displayName }}</span>
-    <p-button (click)="logout()">logout</p-button>
-  </div>
-  } @else {
-  <p-button [routerLink]="['auth', 'login']">login</p-button>
-  }
-</header>
+<app-toolbar>
+  <ng-template #start>
+    <app-logo />
+  </ng-template>
+
+  <ng-template #end>
+    <div class="flex items-center gap-1">
+      <app-theme-toggle />
+      <app-language-selector />
+      <app-user-menu />
+    </div>
+  </ng-template>
+</app-toolbar>
+
 <main class="container mx-auto h-full w-full p-4">
   <router-outlet />
 </main>
