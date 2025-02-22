@@ -1,0 +1,21 @@
+<app-toolbar [border]="true" class="only-desktop">
+  <ng-template #start>
+    <app-logo />
+  </ng-template>
+
+  <ng-template #end>
+    <div class="flex items-center gap-1">
+      <p-button
+        icon="pi pi-plus-circle"
+        variant="outlined"
+        class="leading-none"
+        [label]="'COMMON.CREATE' | translate"
+        [rounded]="true"
+        [routerLink]="createLink"
+      />
+      <app-theme-toggle />
+      <app-language-selector />
+      <app-user-menu />
+    </div>
+  </ng-template>
+</app-toolbar>

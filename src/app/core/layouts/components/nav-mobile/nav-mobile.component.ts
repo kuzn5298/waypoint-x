@@ -1,10 +1,4 @@
-import {
-  Component,
-  computed,
-  inject,
-  signal,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { AvatarModule } from 'primeng/avatar';
@@ -48,7 +42,6 @@ export class NavMobileComponent {
       label: 'COMMON.CREATE',
       icon: 'pi pi-plus-circle',
       routerLink: AppRoutes.CREATE_ROUTE,
-      disabled: true,
     },
     {
       label: 'COMMON.NAVIGATE',

@@ -1,0 +1,5 @@
+@reference "tailwindcss";
+
+.with-container {
+  @apply flex p-4 container self-center;
+}

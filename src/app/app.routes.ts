@@ -33,6 +33,20 @@ export const routes: Routes = [
   },
   {
     path: '',
+    component: MainLayoutComponent,
+    data: { withoutContainer: true },
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./features/create-route/create-route.routes').then(
+            (m) => m.createRoutes
+          ),
+      },
+    ],
+  },
+  {
+    path: '',
     component: AuthLayoutComponent,
     loadChildren: () =>
       import('./features/auth/auth.routes').then((m) => m.authRoutes),
@@ -43,7 +57,5 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./features/error/error.routes').then((m) => m.errorRoutes),
   },
-  // { path: 'create', component: undefined },
-  // { path: 'route', component: undefined },
   { path: '**', redirectTo: AppRoutes.NOT_FOUND, pathMatch: 'full' },
 ];
