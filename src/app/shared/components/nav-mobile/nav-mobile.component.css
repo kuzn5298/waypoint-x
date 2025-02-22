@@ -1,42 +1,33 @@
+@reference "tailwindcss";
+
 .nav-mobile {
-  border-top: 1px solid var(--p-toolbar-border-color);
+  @apply border-t border-[var(--p-toolbar-border-color)];
 }
 
 .nav-item {
   ::ng-deep.p-button {
-    padding: 0.125rem;
-    height: 3.5rem;
-    width: 3.5rem;
-    font-size: 0.75rem;
-    gap: 0.125rem;
+    @apply p-1 size-14 text-xs gap-0.5;
   }
 
   ::ng-deep.p-button-label {
-    display: inline-block;
-    width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 0.5rem;
+    @apply inline-block w-full text-ellipsis text-[0.5rem];
   }
 
   ::ng-deep.p-button-icon {
-    display: flex;
-    align-items: center;
-    height: 1.5rem;
+    @apply flex items-center h-6;
   }
 }
 
 .nav-item.active {
   ::ng-deep.p-button {
-    color: var(--p-button-text-primary-color);
+    @apply text-[var(--p-button-text-primary-color)];
   }
 
   ::ng-deep.p-button-text.p-button-secondary:not(:disabled):hover {
-    background-color: transparent;
+    @apply bg-transparent;
   }
 
   ::ng-deep.p-avatar {
-    border: 1px solid currentColor;
+    @apply border border-current;
   }
 }

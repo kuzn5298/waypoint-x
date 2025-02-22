@@ -1,6 +1,15 @@
 @import "tailwindcss";
+
 @plugin "tailwindcss-primeui";
 
 @theme {
   --color-error: var(--p-error);
+}
+
+.only-mobile {
+  @apply block sm:hidden;
+}
+
+.only-desktop {
+  @apply hidden sm:block;
 }

@@ -1,5 +1,5 @@
 <div class="flex flex-col size-full">
-  <app-toolbar [border]="true" class="hidden sm:block">
+  <app-toolbar [border]="true" class="only-desktop">
     <ng-template #start>
       <app-logo />
     </ng-template>
@@ -17,5 +17,5 @@
     <router-outlet />
   </main>
 
-  <app-nav-mobile class="sm:hidden" />
+  <app-nav-mobile class="only-mobile" />
 </div>
