@@ -6,6 +6,7 @@ import { ToolbarComponent } from '@/app/shared/components/toolbar/toolbar.compon
 import { ThemeToggleComponent } from '@/app/shared/components/theme-toggle/theme-toggle.component';
 import { LanguageSelectorComponent } from '@/app/shared/components/language-selector/language-selector.component';
 import { UserMenuComponent } from '@/app/shared/components/user-menu/user-menu.component';
+import { NavMobileComponent } from '@/app/shared/components/nav-mobile/nav-mobile.component';
 
 @Component({
   selector: 'app-main-layout',
@@ -17,6 +18,7 @@ import { UserMenuComponent } from '@/app/shared/components/user-menu/user-menu.c
     ThemeToggleComponent,
     LanguageSelectorComponent,
     UserMenuComponent,
+    NavMobileComponent,
   ],
   templateUrl: './main-layout.component.html',
   styleUrl: './main-layout.component.css',

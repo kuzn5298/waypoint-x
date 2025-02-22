@@ -1,17 +1,21 @@
-<app-toolbar>
-  <ng-template #start>
-    <app-logo />
-  </ng-template>
+<div class="flex flex-col size-full">
+  <app-toolbar [border]="true" class="hidden sm:block">
+    <ng-template #start>
+      <app-logo />
+    </ng-template>
 
-  <ng-template #end>
-    <div class="flex items-center gap-1">
-      <app-theme-toggle />
-      <app-language-selector />
-      <app-user-menu />
-    </div>
-  </ng-template>
-</app-toolbar>
+    <ng-template #end>
+      <div class="flex items-center gap-1">
+        <app-theme-toggle />
+        <app-language-selector />
+        <app-user-menu />
+      </div>
+    </ng-template>
+  </app-toolbar>
 
-<main class="container mx-auto h-full w-full p-4">
-  <router-outlet />
-</main>
+  <main class="container flex flex-1 p-4 self-center">
+    <router-outlet />
+  </main>
+
+  <app-nav-mobile class="sm:hidden" />
+</div>

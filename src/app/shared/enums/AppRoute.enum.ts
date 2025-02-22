@@ -1,6 +1,7 @@
 export const AppRoutes = {
   MAIN: '',
   ROUTES: 'routes',
+  CREATE_ROUTE: 'create',
   SETTINGS: 'settings',
   PROFILE: 'profile',
   SIGN_IN: 'sign-in',

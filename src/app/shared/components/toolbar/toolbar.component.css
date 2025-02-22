@@ -1,0 +1,3 @@
+:host.toolbar-border {
+  border-bottom: 1px solid var(--p-toolbar-border-color);
+}

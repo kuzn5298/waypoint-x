@@ -1,0 +1,37 @@
+<nav class="nav-mobile p-2">
+  <ul class="flex justify-around items-center m-0 p-0">
+    @for(item of items(); track item.label) {
+    <li>
+      <p-button
+        variant="text"
+        severity="secondary"
+        iconPos="top"
+        class="nav-item"
+        [icon]="item.icon"
+        [label]="item.label | translate"
+        [routerLink]="item.routerLink"
+        [disabled]="item.disabled"
+        routerLinkActive="active"
+      />
+    </li>
+    }
+    <li>
+      <p-button
+        variant="text"
+        severity="secondary"
+        iconPos="top"
+        class="nav-item"
+        [label]="'COMMON.PROFILE' | translate"
+        [routerLink]="profileLink"
+        routerLinkActive="active"
+      >
+        <p-avatar
+          shape="circle"
+          class="size-6 bg-transparent text-inherit"
+          [icon]="!userAvatar() ? 'pi pi-user' : undefined"
+          [image]="userAvatar()"
+        />
+      </p-button>
+    </li>
+  </ul>
+</nav>
