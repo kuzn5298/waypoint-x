@@ -18,7 +18,7 @@ export class ThemeToggleComponent {
   private themeService = inject(ThemeService);
   private toggleRef = viewChild<ElementRef<HTMLSpanElement>>('toggleButton');
 
-  theme = computed(() => this.themeService.getTheme());
+  isDark = computed(() => this.themeService.isDark());
 
   createNextAnimation(): void {
     const element = this.toggleRef()?.nativeElement;

@@ -14,7 +14,7 @@ export class ThemeService {
   private viewTransitionService = inject(ViewTransitionService);
 
   private currentTheme = signal<Theme>(DEFAULT_THEME);
-  getTheme = computed(() => this.currentTheme());
+  isDark = computed(() => this.currentTheme() === 'dark');
 
   constructor() {
     const savedTheme = this.persistenceService.get(

@@ -3,6 +3,6 @@
   pButton
   text
   rounded
-  [icon]="'pi ' + (theme() === 'dark' ? 'pi-sun' : 'pi-moon')"
+  [icon]="'pi ' + (isDark() ? 'pi-sun' : 'pi-moon')"
   (click)="toggleTheme()"
 ></button>

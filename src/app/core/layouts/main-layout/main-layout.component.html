@@ -1,7 +1,10 @@
 <div class="flex flex-col size-full">
   <app-main-toolbar />
 
-  <main class="flex-1" [class.with-container]="!withoutContainer()">
+  <main
+    class="flex-1 overflow-auto"
+    [class.with-container]="!withoutContainer()"
+  >
     <router-outlet />
   </main>
 
