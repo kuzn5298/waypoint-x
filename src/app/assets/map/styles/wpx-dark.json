@@ -1,9 +1,8 @@
 {
-  "name": "wpx-dark",
   "version": 8,
-  "metadata": {
-    "maputnik:renderer": "mbgljs"
-  },
+  "id": "wpx-dark",
+  "name": "wpx-dark",
+  "metadata": {},
   "sources": {
     "ne2_shaded": {
       "maxzoom": 6,
@@ -1841,7 +1840,7 @@
           17,
           ["step", ["get", "rank"], 12, 10, 8]
         ],
-        "visibility": "visible"
+        "visibility": "none"
       },
       "paint": {
         "text-color": "#878787",
@@ -2148,6 +2147,5 @@
         "text-opacity": 0.5
       }
     }
-  ],
-  "id": "g9bn8cz39"
+  ]
 }

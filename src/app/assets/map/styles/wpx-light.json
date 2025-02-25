@@ -1,16 +1,8 @@
 {
-  "version": 8,
+  "id": "wpx-light",
   "name": "wpx-light",
-  "metadata": { "maputnik:renderer": "mbgljs" },
+  "version": 8,
   "sources": {
-    "ne2_shaded": {
-      "maxzoom": 6,
-      "tileSize": 256,
-      "tiles": [
-        "https://tiles.openfreemap.org/natural_earth/ne2sr/{z}/{x}/{y}.png"
-      ],
-      "type": "raster"
-    },
     "openmaptiles": {
       "type": "vector",
       "url": "https://tiles.openfreemap.org/planet"
@@ -1996,7 +1988,7 @@
           17,
           ["step", ["get", "rank"], 12, 10, 8]
         ],
-        "visibility": "visible"
+        "visibility": "none"
       },
       "paint": {
         "text-color": "#9D9E9F",
@@ -2303,6 +2295,5 @@
         "text-opacity": 0.5
       }
     }
-  ],
-  "id": "g9bn8cz39"
+  ]
 }
