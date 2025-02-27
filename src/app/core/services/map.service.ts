@@ -1,16 +1,14 @@
-import { ThemeService } from '@/app/core/services/theme.service';
 import { effect, inject, Injectable, signal } from '@angular/core';
+import { ThemeService } from '@/app/core/services/theme.service';
 
 export enum MapStyles {
   AUTO = 'auto',
-  DARK = 'dark',
-  LIGHT = 'light',
   STREET = 'street',
+  STREET_NIGHT = 'street-dark',
 }
 
-const LIGHT_STYLE = '/map/styles/wpx-light.json';
-const DARK_STYLE = '/map/styles/wpx-dark.json';
 const STREET_STYLE = '/map/styles/wpx-street.json';
+const STREET_NIGHT_STYLE = '/map/styles/wpx-street.json';
 
 @Injectable({
   providedIn: 'root',
@@ -22,23 +20,19 @@ export class MapService {
   mapStyle = signal<string>('');
 
   constructor() {
-    this.styleType.set(MapStyles.STREET);
+    this.styleType.set(MapStyles.AUTO);
 
     effect(() => {
       this.setStyle.call(this, this.styleType(), this.themeService.isDark());
     });
   }
 
-  private setDarkStyle() {
-    this.mapStyle.set(DARK_STYLE);
-  }
-
-  private setLightStyle() {
-    this.mapStyle.set(LIGHT_STYLE);
-  }
-
   private setStreetStyle() {
     this.mapStyle.set(STREET_STYLE);
+  }
+
+  private setStreetNightStyle() {
+    this.mapStyle.set(STREET_NIGHT_STYLE);
   }
 
   private setStyle(style: MapStyles, isDark: boolean = false) {
@@ -48,13 +42,11 @@ export class MapService {
 
     switch (style) {
       case MapStyles.AUTO:
-        return isDark ? this.setDarkStyle() : this.setLightStyle();
-      case MapStyles.DARK:
-        return this.setDarkStyle();
-      case MapStyles.LIGHT:
-        return this.setLightStyle();
+        return isDark ? this.setStreetNightStyle() : this.setStreetStyle();
       case MapStyles.STREET:
         return this.setStreetStyle();
+      case MapStyles.STREET_NIGHT:
+        return this.setStreetNightStyle();
     }
   }
 
