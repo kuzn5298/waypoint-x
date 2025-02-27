@@ -34,8 +34,7 @@
             ],
             "styles": [
               "src/app/styles/main.css",
-              "node_modules/primeicons/primeicons.css",
-              "node_modules/maplibre-gl/dist/maplibre-gl.css"
+              "node_modules/primeicons/primeicons.css"
             ],
             "scripts": []
           },
@@ -98,8 +97,7 @@
             ],
             "styles": [
               "src/app/styles/main.css",
-              "node_modules/primeicons/primeicons.css",
-              "node_modules/maplibre-gl/dist/maplibre-gl.css"
+              "node_modules/primeicons/primeicons.css"
             ],
             "scripts": [],
             "builderMode": "browser"

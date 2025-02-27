@@ -1,12 +1,14 @@
 import { MapService } from '@/app/core/services/map.service';
 import { Component, inject, signal } from '@angular/core';
-import { MapComponent } from '@maplibre/ngx-maplibre-gl';
-
-import { ButtonModule } from 'primeng/button';
+import {
+  MapComponent,
+  ControlComponent,
+  NavigationControlDirective,
+} from '@maplibre/ngx-maplibre-gl';
 
 @Component({
   selector: 'app-create-route',
-  imports: [MapComponent, ButtonModule],
+  imports: [MapComponent, ControlComponent, NavigationControlDirective],
   templateUrl: './create-route.component.html',
   styleUrl: './create-route.component.css',
 })

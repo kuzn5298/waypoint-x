@@ -1,6 +1,7 @@
 @import "./tailwind";
 @import "./override";
 @import "./view-transition";
+@import "./map";
 
 body {
   position: fixed;
