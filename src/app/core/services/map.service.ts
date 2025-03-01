@@ -8,7 +8,7 @@ export enum MapStyles {
 }
 
 const STREET_STYLE = '/map/styles/wpx-street.json';
-const STREET_NIGHT_STYLE = '/map/styles/wpx-street.json';
+const STREET_NIGHT_STYLE = '/map/styles/wpx-street-night.json';
 
 @Injectable({
   providedIn: 'root',
