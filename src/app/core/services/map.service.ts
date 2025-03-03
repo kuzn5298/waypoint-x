@@ -17,7 +17,7 @@ export class MapService {
   private themeService = inject(ThemeService);
   private styleType = signal<MapStyles>(MapStyles.AUTO);
 
-  mapStyle = signal<string>('');
+  mapStyle = signal<string>(STREET_STYLE);
 
   constructor() {
     this.styleType.set(MapStyles.AUTO);

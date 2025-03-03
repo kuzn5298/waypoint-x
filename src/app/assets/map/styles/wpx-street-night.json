@@ -2335,6 +2335,7 @@
       "minzoom": 8,
       "filter": [
         "all",
+        ["!=", ["get", "ref_length"], null],
         ["<=", ["get", "ref_length"], 6],
         [
           "match",
@@ -2372,6 +2373,7 @@
       "minzoom": 7,
       "filter": [
         "all",
+        ["!=", ["get", "ref_length"], null],
         ["<=", ["get", "ref_length"], 6],
         [
           "match",
@@ -2407,6 +2409,7 @@
       "minzoom": 9,
       "filter": [
         "all",
+        ["!=", ["get", "ref_length"], null],
         ["<=", ["get", "ref_length"], 6],
         [
           "match",
@@ -2442,8 +2445,8 @@
       "minzoom": 10,
       "filter": ["all", ["has", "iata"]],
       "layout": {
-        "icon-image": "airport_11",
-        "icon-size": 1,
+        "icon-image": "airport",
+        "icon-size": 0.7,
         "text-anchor": "top",
         "text-field": [
           "case",
@@ -2507,9 +2510,9 @@
       "filter": ["==", ["get", "class"], "village"],
       "layout": {
         "icon-allow-overlap": true,
-        "icon-image": ["step", ["zoom"], "circle_11_black", 10, ""],
+        "icon-image": ["step", ["zoom"], "circle", 10, ""],
         "icon-optional": false,
-        "icon-size": 0.2,
+        "icon-size": 0.1,
         "text-anchor": "bottom",
         "text-field": [
           "case",
@@ -2545,9 +2548,9 @@
       "filter": ["==", ["get", "class"], "town"],
       "layout": {
         "icon-allow-overlap": true,
-        "icon-image": ["step", ["zoom"], "circle_11_black", 10, ""],
+        "icon-image": ["step", ["zoom"], "circle", 10, ""],
         "icon-optional": false,
-        "icon-size": 0.2,
+        "icon-size": 0.1,
         "text-anchor": "bottom",
         "text-field": [
           "case",
@@ -2615,9 +2618,9 @@
       ],
       "layout": {
         "icon-allow-overlap": true,
-        "icon-image": ["step", ["zoom"], "circle_11_black", 9, ""],
+        "icon-image": ["step", ["zoom"], "circle", 9, ""],
         "icon-optional": false,
-        "icon-size": 0.4,
+        "icon-size": 0.2,
         "text-anchor": "bottom",
         "text-field": [
           "case",
@@ -2660,9 +2663,9 @@
       ],
       "layout": {
         "icon-allow-overlap": true,
-        "icon-image": ["step", ["zoom"], "circle_11_black", 9, ""],
+        "icon-image": ["step", ["zoom"], "circle", 9, ""],
         "icon-optional": false,
-        "icon-size": 0.5,
+        "icon-size": 0.3,
         "text-anchor": "bottom",
         "text-field": [
           "case",

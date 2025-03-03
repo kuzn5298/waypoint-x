@@ -1,8 +1,10 @@
 <mgl-map
-  [style]="mapService.mapStyle()"
+  [style]="style()"
   [zoom]="[15]"
   [center]="[12.5238, 41.878]"
   [canvasContextAttributes]="{ preserveDrawingBuffer: true }"
 >
   <mgl-control mglNavigation />
+  <app-poi />
+  <app-poi-transport />
 </mgl-map>
