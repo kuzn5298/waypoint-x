@@ -31,7 +31,7 @@ export class CreateRouteComponent implements OnInit {
   styleLoaded = toSignal(
     toObservable(this.style).pipe(
       switchMap(() =>
-        timer(50).pipe(
+        timer(100).pipe(
           map(() => true),
           startWith(false)
         )
