@@ -1,8 +1,9 @@
 <mgl-map
   [style]="style()"
-  [zoom]="[15]"
-  [center]="[12.5238, 41.878]"
+  [zoom]="[0]"
+  [center]="[0, 0]"
   [canvasContextAttributes]="{ preserveDrawingBuffer: true }"
+  (mapLoad)="mapLoad($event)"
 >
   <mgl-control mglNavigation />
   <app-poi />
