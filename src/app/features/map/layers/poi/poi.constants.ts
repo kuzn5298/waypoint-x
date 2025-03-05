@@ -47,10 +47,17 @@ const POI_FILTER: FilterSpecification = [
   CLASSES_FILTER,
 ];
 
-const POI_PAINT = {
-  'text-color': POI_COLOR_FILTER,
-  'text-halo-blur': 0.5,
-  'text-halo-width': 1,
+const getHoverColorFilter = () => {
+  const root = document.documentElement;
+  const hoverColor =
+    getComputedStyle(root).getPropertyValue('--p-primary-color');
+
+  return [
+    'case',
+    ['boolean', ['feature-state', 'hover'], false],
+    hoverColor,
+    POI_COLOR_FILTER,
+  ];
 };
 
 const ICON_IMAGE_FILTER: ExpressionSpecification = [
@@ -81,7 +88,9 @@ export const getPoiLayout = (): any => POI_LAYOUT;
 
 export const getPoiPaint = (isDark = false): any => {
   return {
-    ...POI_PAINT,
+    'text-color': getHoverColorFilter(),
+    'text-halo-blur': 0.5,
+    'text-halo-width': 1,
     'text-halo-color': isDark ? '#000000' : '#ffffff',
   };
 };

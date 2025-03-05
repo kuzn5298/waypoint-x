@@ -72,17 +72,26 @@ const POI_TRANSPORT_LAYOUT = {
   visibility: 'visible',
 };
 
-const POI_TRANSPORT_PAINT = {
-  'text-color': POI_COLOR_FILTER,
-  'text-halo-blur': 0.5,
-  'text-halo-width': 1,
+const getHoverColorFilter = () => {
+  const root = document.documentElement;
+  const hoverColor =
+    getComputedStyle(root).getPropertyValue('--p-primary-color');
+
+  return [
+    'case',
+    ['boolean', ['feature-state', 'hover'], false],
+    hoverColor,
+    POI_COLOR_FILTER,
+  ];
 };
 
 //!TODO: Fix the type of the layout and paint objects
 
 export const getPoiTransportPaint = (isDark = false): any => {
   return {
-    ...POI_TRANSPORT_PAINT,
+    'text-color': getHoverColorFilter(),
+    'text-halo-blur': 0.5,
+    'text-halo-width': 1,
     'text-halo-color': isDark ? '#000000' : '#ffffff',
   };
 };

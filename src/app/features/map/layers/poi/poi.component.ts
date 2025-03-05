@@ -1,7 +1,8 @@
 import { ThemeService } from '@/app/core/services/theme.service';
-import { Component, computed, effect, inject, signal } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { LayerComponent } from '@maplibre/ngx-maplibre-gl';
 import { getPoiFilter, getPoiLayout, getPoiPaint } from './poi.constants';
+import { PoiHoverExtensionComponent } from '../../components/poi-hover-extension/poi-hover-extension.component';
 
 @Component({
   selector: 'app-poi',
@@ -9,7 +10,7 @@ import { getPoiFilter, getPoiLayout, getPoiPaint } from './poi.constants';
   templateUrl: './poi.component.html',
   styleUrl: './poi.component.css',
 })
-export class PoiComponent {
+export class PoiComponent extends PoiHoverExtensionComponent {
   private themeService = inject(ThemeService);
 
   filter = computed(getPoiFilter);

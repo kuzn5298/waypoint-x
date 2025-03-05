@@ -7,4 +7,7 @@
   [filter]="filter()"
   [layout]="layout()"
   [paint]="paint()"
+  (layerMouseMove)="onMouseMove($event)"
+  (layerMouseLeave)="onMouseLeave($event)"
+  (layerClick)="onMouseClick($event)"
 />
