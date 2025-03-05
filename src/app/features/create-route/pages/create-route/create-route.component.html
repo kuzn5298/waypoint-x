@@ -1,11 +1,14 @@
+@if(mapConfigLoaded()) {
 <mgl-map
   [style]="style()"
-  [zoom]="[0]"
-  [center]="[0, 0]"
+  [zoom]="[10]"
+  [center]="mapCenter()"
   [canvasContextAttributes]="{ preserveDrawingBuffer: true }"
-  (mapLoad)="mapLoad($event)"
 >
   <mgl-control mglNavigation />
+  @if(styleLoaded()) {
   <app-poi />
   <app-poi-transport />
+  }
 </mgl-map>
+}
