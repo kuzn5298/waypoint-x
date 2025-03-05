@@ -29,11 +29,11 @@
   ],
   "dataGroups": [
     {
-      "name": "geocode-cache",
-      "urls": ["/app/geocode"],
+      "name": "api-perform",
+      "urls": ["/api/geocode"],
       "cacheConfig": {
         "strategy": "performance",
-        "maxSize": 1,
+        "maxSize": 10,
         "maxAge": "1d"
       }
     }
