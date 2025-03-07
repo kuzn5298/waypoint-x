@@ -1,4 +1,4 @@
-import { Component, output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { Map } from 'maplibre-gl';
 import { MapMouseEvent } from '../../types/MapMouseEvent';
 
@@ -7,6 +7,7 @@ import { MapMouseEvent } from '../../types/MapMouseEvent';
 })
 export class PoiHoverExtensionComponent {
   click = output<Record<string, any>>();
+  nonInteractive = input(false);
 
   hoveredFeatureId: string | number | null = null;
 
@@ -30,6 +31,7 @@ export class PoiHoverExtensionComponent {
   }
 
   onMouseMove(event: MapMouseEvent) {
+    if (this.nonInteractive()) return;
     const id = event.features?.[0]?.id;
     if (!id) return;
     const map = event.target;
@@ -38,12 +40,14 @@ export class PoiHoverExtensionComponent {
   }
 
   onMouseLeave(event: MapMouseEvent) {
+    if (this.nonInteractive()) return;
     if (!this.hoveredFeatureId) return;
     const map = event.target;
     this.removeHoverEffect(map);
   }
 
   onMouseClick(event: MapMouseEvent) {
+    if (this.nonInteractive()) return;
     const properties = event.features?.[0].properties ?? {};
     this.click.emit(properties);
   }
